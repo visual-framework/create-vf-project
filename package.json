@@ -1,6 +1,6 @@
 {
   "name": "@visual-framework/create-vf-eleventy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Helps to create a new Visual Framework 2.0 Eleventy-based project.",
   "main": "createVfEleventy.js",
   "bin": {
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/visual-framework/create-vf-eleventy/issues"
   },
-  "homepage": "https://github.com/visual-framework/create-vf-eleventy#readme"
+  "homepage": "https://github.com/visual-framework/create-vf-eleventy#readme",
+  "dependencies": {
+    "cli-spinner": "^0.2.10",
+    "colorette": "^1.0.8"
+  }
 }
