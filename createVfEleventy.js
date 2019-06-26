@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +13,8 @@ const appName = process.argv.slice(2)[0];
 const appKind = process.argv.slice(2)[1] !== "--app";
 let appDirectory = `${process.cwd()}/${appName}`
 
-let kind = appKind ? "vf-eleventy" : "stencil-app-starter";
+// for now we only support vf-eleventy
+let kind = appKind ? "vf-eleventy" : "vf-eleventy";
 
 const run = async () => {
   console.log(underline(`\nGetting started! 💎 ${kind}`))
@@ -49,7 +52,7 @@ const createStencilApp = () => {
     } else {
       console.log("\nNo app name was provided.")
       console.log("\nProvide an app name in the following format: ")
-      console.log("\nnpm init vf-eleventy", `"app-name"\n`)
+      console.log("\nnpm init @visual-framework/vf-eleventy", `"app-name"\n`)
         resolve(false)
     }
   })
