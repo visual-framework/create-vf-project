@@ -10,5 +10,5 @@ npm init @visual-framework/vf-eleventy
 
 1. Make any needed edits
 1. Bump the version number
-1. Run `npm install`
+1. Run `yarn install`
 1. `npm publish`
