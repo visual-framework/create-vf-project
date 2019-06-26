@@ -6,7 +6,8 @@ const path = require('path');
 const exec = require('child_process').exec;
 
 // Make the console output a bit prettier
-const Spinner = require('cli-spinner').Spinner;
+const ora = require('ora');
+const cliSpinners = require('cli-spinners');
 const { red, blue, bold, underline } = require("colorette")
 
 const appName = process.argv.slice(2)[0];
@@ -28,6 +29,9 @@ const run = async () => {
     await cdIntoNewApp()
     await installPackages()
     console.log(bold("\n🎉  All done!\n"))
+    console.log(`\n⌨️  You're now ready to develop:`)
+    console.log(`    1. cd ${appName}`)
+    console.log(`    2. gulp dev`)
   }
 }
 
@@ -35,13 +39,12 @@ const createStencilApp = () => {
   return new Promise((resolve) => {
     if (appName) {
       try {
-        exec(`git clone https://github.com/visual-framework/${kind} "${appName}"`, (error, stdout, stderr) => {
+        exec(`git clone --depth 1 -b master https://github.com/visual-framework/${kind} "${appName}"`, (error, stdout, stderr) => {
           if (error) {
             console.error(`\n⚠️  Couldn't check out ${kind} into "${appName}"`)
             resolve(false)
           } else {
             console.log(`\nCloned Visual Frameork ${kind} into "${appName}"`)
-            console.log(`\nYou're now ready to develop, move into your ${appName} directory and try "gulp dev"`)
             resolve(true)
           }
         })
@@ -68,11 +71,23 @@ const cdIntoNewApp = () => {
 
 const installPackages = () => {
   return new Promise((resolve) => {
-    var spinner = new Spinner('📦  Installing packages (this may take some time)... %s');
-    spinner.setSpinnerString('|/-\\');
+    const spinner = new ora({
+      prefixText: '📦 ',
+    	text: 'Installing packages',
+      // indent: 2,
+    	spinner: 'pong'
+    });
+
+    setTimeout(() => {
+      spinner.text = 'Installing packages (this may take some time)';
+    	spinner.color = 'yellow';
+    }, 5000);
+
+
+    // https://github.com/sindresorhus/ora
     spinner.start();
-    exec(`npm install --save`, () => {
-      spinner.stop();
+    exec(`yarn install --save`, () => {
+      spinner.succeed();
       resolve()
     })
   })
