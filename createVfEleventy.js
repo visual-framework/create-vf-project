@@ -3,7 +3,11 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const mv = require('mv');
+const del = require('delete');
 const exec = require('child_process').exec;
+const download = require('download');
+const unzipper = require('unzipper');
 
 // Make the console output a bit prettier
 const ora = require('ora');
@@ -19,7 +23,7 @@ let kind = appKind ? "vf-eleventy" : "vf-eleventy";
 
 const run = async () => {
   console.log(` --------------\n`)
-  console.log(bold(`\n🚧  Getting started!`))
+  console.log(bold(`\n🚧  Getting started!\n`))
 
   let success = await createStencilApp()
   if (!success) {
@@ -27,12 +31,14 @@ const run = async () => {
     console.log(`\n⚠️  Tip: Make sure the directory "${appName}" does not already exsist.\n`)
     return false;
   } else {
+    await unzipArchive()
+    await moveFiles()
     await cdIntoNewApp()
     await installPackages()
-    console.log(bold("\n🎉  All done!"))
-    console.log(`⌨️  You're now ready to develop:`)
-    console.log(`    1. cd ${appName}`)
-    console.log(`    2. gulp dev\n`)
+    console.log(bold("🎉  All done!\n"))
+    console.log(`⌨️   You're now ready to develop:`)
+    console.log(`      1. cd ${appName}`)
+    console.log(`      2. gulp dev\n`)
     console.log(` --------------\n`)
   }
 }
@@ -41,17 +47,32 @@ const createStencilApp = () => {
   return new Promise((resolve) => {
     if (appName) {
       try {
-        exec(`git clone --depth 1 -b master https://github.com/visual-framework/${kind} "${appName}"`, (error, stdout, stderr) => {
-          if (error) {
-            console.error(`\n⚠️  Couldn't check out ${kind} into "${appName}"`)
-            resolve(false)
-          } else {
-            console.log(`\n✨  Cloned ${kind} into "${appName}"`)
-            resolve(true)
-          }
-        })
+        const spinner = new ora({
+          prefixText: '🌍 ',
+        	text: 'Fetching https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.1.zip',
+          // indent: 2,
+        	// spinner: 'pong'
+        });
+
+
+        download('https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.1.zip').then(data => {
+          fs.writeFileSync('vf-eleventy.zip', data);
+          resolve(true)
+          spinner.text = 'Fetched https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.1.zip';
+          spinner.succeed();
+        });
+
+        //
+        // exec(`git clone --depth 1 -b master https://github.com/visual-framework/${kind} "${appName}"`, (error, stdout, stderr) => {
+        //   if (error) {
+        //     resolve(false)
+        //   } else {
+        //     console.log(`\n✨  Cloned ${kind} into "${appName}"`)
+        //     resolve(true)
+        //   }
+        // })
       } catch(e) {
-        console.log(`\nCouldn't check out ${kind} into "${appName}"`)
+        console.error(`\n⚠️  Couldn't get archive of ${kind}"`)
         resolve(false)
       }
     } else {
@@ -63,9 +84,35 @@ const createStencilApp = () => {
   })
 }
 
+const unzipArchive = () => {
+  return new Promise((resolve) => {
+    fs.createReadStream('vf-eleventy.zip')
+      .pipe(unzipper.Extract({ path: 'temp' }))
+      .on('entry', entry => entry.autodrain())
+      .promise()
+      .then( () => resolve(), e => console.log('⚠️  Error unzipping',e));
+  })
+}
+
+
+const moveFiles = () => {
+  return new Promise((resolve) => {
+    del(['vf-eleventy.zip'], function(err, deleted) {
+      if (err) throw err;
+      // deleted files
+      // console.log(deleted);
+    });
+
+    mv('temp/vf-eleventy-2.0.0-alpha.1', appName, {mkdirp: true}, function(err) {
+      console.log(`🚚  Files unpacked and moved into ./${appName}`)
+      resolve()
+    });
+  })
+}
+
 const cdIntoNewApp = () => {
   return new Promise((resolve) => {
-    console.log(`\n🧭  Switching to the ./${appName} directory.`)
+    console.log(`🗺  Switching to the ./${appName} directory`)
     process.chdir(`${appName}`);
     resolve()
   })
@@ -75,14 +122,14 @@ const installPackages = () => {
   return new Promise((resolve) => {
     const spinner = new ora({
       prefixText: '📦 ',
-    	text: 'Installing packages',
+    	text: 'yarn install-ing packages',
       // indent: 2,
     	spinner: 'pong'
     });
 
     setTimeout(() => {
-      spinner.text = 'Installing packages (this may take some time)';
-    	spinner.color = 'yellow';
+      spinner.text = 'yarn install (this may take some time)';
+    	// spinner.color = 'yellow';
     }, 5000);
 
 
