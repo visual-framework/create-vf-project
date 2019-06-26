@@ -99,13 +99,11 @@ const unzipArchive = () => {
 
 const moveFiles = () => {
   return new Promise((resolve) => {
-
     del(['vf-eleventy.zip'], function(err, deleted) {
       if (err) throw err;
       // deleted files
       // console.log(deleted);
     });
-
     mv('temp/vf-eleventy-2.0.0-alpha.4', appName, {mkdirp: true}, function(err) {
       console.log(`🚚  Files unpacked and moved into ./${appName}`)
       resolve()
@@ -170,8 +168,5 @@ const restoreSymLink = () => {
     // process.chdir(`${appName}`);
   })
 }
-
-
-
 
 run();
