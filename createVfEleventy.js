@@ -51,16 +51,16 @@ const createApp = () => {
       try {
         const spinner = new ora({
           prefixText: '🌍 ',
-        	text: 'Fetching github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.3.zip',
+        	text: 'Fetching github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.4.zip',
           // indent: 2,
         	// spinner: 'pong'
         });
 
 
-        download('https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.3.zip').then(data => {
+        download('https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.4.zip').then(data => {
           fs.writeFileSync('vf-eleventy.zip', data);
           resolve(true)
-          spinner.text = 'Fetched github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.3.zip';
+          spinner.text = 'Fetched github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.4.zip';
           spinner.succeed();
         });
 
@@ -106,7 +106,7 @@ const moveFiles = () => {
       // console.log(deleted);
     });
 
-    mv('temp/vf-eleventy-2.0.0-alpha.3', appName, {mkdirp: true}, function(err) {
+    mv('temp/vf-eleventy-2.0.0-alpha.4', appName, {mkdirp: true}, function(err) {
       console.log(`🚚  Files unpacked and moved into ./${appName}`)
       resolve()
     });
