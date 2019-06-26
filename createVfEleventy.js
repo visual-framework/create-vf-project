@@ -38,6 +38,7 @@ const createStencilApp = () => {
             resolve(false)
           } else {
             console.log(`\nCloned Visual Frameork ${kind} into "${appName}"`)
+            console.log(`\nYou're now ready to develop, move into your ${appName} directory and try "gulp dev"`)
             resolve(true)
           }
         })
@@ -64,8 +65,7 @@ const cdIntoNewApp = () => {
 
 const installPackages = () => {
   return new Promise((resolve) => {
-    // console.log("\n📦  Installing packages...")
-    var spinner = new Spinner('📦  Installing packages... %s');
+    var spinner = new Spinner('📦  Installing packages (this may take some time)... %s');
     spinner.setSpinnerString('|/-\\');
     spinner.start();
     exec(`npm install --save`, () => {
