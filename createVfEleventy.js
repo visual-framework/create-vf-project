@@ -25,7 +25,7 @@ const run = async () => {
   console.log(` --------------\n`)
   console.log(bold(`\n🚧  Getting started!\n`))
 
-  let success = await createStencilApp()
+  let success = await createApp()
   if (!success) {
     console.log(`\n😭  Something went wrong when initing ${kind}`)
     console.log(`\n⚠️  Tip: Make sure the directory "${appName}" does not already exsist.\n`)
@@ -43,7 +43,7 @@ const run = async () => {
   }
 }
 
-const createStencilApp = () => {
+const createApp = () => {
   return new Promise((resolve) => {
     if (appName) {
       try {
