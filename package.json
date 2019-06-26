@@ -1,0 +1,20 @@
+{
+  "name": "@visual-framework/create-vf-eleventy",
+  "version": "0.0.1",
+  "description": "Helps to create a new Visual Framework 2.0 Eleventy-based project.",
+  "main": "createVfEleventy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visual-framework/create-vf-eleventy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/visual-framework/create-vf-eleventy/issues"
+  },
+  "homepage": "https://github.com/visual-framework/create-vf-eleventy#readme"
+}
