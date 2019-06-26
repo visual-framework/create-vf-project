@@ -146,7 +146,7 @@ const installPackages = () => {
 
     // https://github.com/sindresorhus/ora
     spinner.start();
-    exec(`yarn install --save`, () => {
+    exec(`yarn install`, () => {
       spinner.succeed();
       resolve()
     })
