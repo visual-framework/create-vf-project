@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const mv = require('mv');
 const del = require('delete');
+const symlinkDir = require('symlink-dir')
 const exec = require('child_process').exec;
 const download = require('download');
 const unzipper = require('unzipper');
@@ -35,6 +36,7 @@ const run = async () => {
     await moveFiles()
     await cdIntoNewApp()
     await installPackages()
+    await restoreSymLink()
     console.log(bold("🎉  All done!\n"))
     console.log(`⌨️   You're now ready to develop:`)
     console.log(`      1. cd ${appName}`)
@@ -49,16 +51,16 @@ const createApp = () => {
       try {
         const spinner = new ora({
           prefixText: '🌍 ',
-        	text: 'Fetching https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.1.zip',
+        	text: 'Fetching github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.4.zip',
           // indent: 2,
         	// spinner: 'pong'
         });
 
 
-        download('https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.1.zip').then(data => {
+        download('https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.4.zip').then(data => {
           fs.writeFileSync('vf-eleventy.zip', data);
           resolve(true)
-          spinner.text = 'Fetched https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.1.zip';
+          spinner.text = 'Fetched github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.4.zip';
           spinner.succeed();
         });
 
@@ -102,8 +104,7 @@ const moveFiles = () => {
       // deleted files
       // console.log(deleted);
     });
-
-    mv('temp/vf-eleventy-2.0.0-alpha.1', appName, {mkdirp: true}, function(err) {
+    mv('temp/vf-eleventy-2.0.0-alpha.4', appName, {mkdirp: true}, function(err) {
       console.log(`🚚  Files unpacked and moved into ./${appName}`)
       resolve()
     });
@@ -112,7 +113,7 @@ const moveFiles = () => {
 
 const cdIntoNewApp = () => {
   return new Promise((resolve) => {
-    console.log(`🗺  Switching to the ./${appName} directory`)
+    console.log(`🗺   Switching to the ./${appName} directory`)
     process.chdir(`${appName}`);
     resolve()
   })
@@ -120,6 +121,14 @@ const cdIntoNewApp = () => {
 
 const installPackages = () => {
   return new Promise((resolve) => {
+
+    // remove the defunct symlink
+    del(['src/components/vf-core-components'], function(err, deleted) {
+      if (err) throw err;
+      // deleted files
+      // console.log(deleted);
+    });
+
     const spinner = new ora({
       prefixText: '📦 ',
     	text: 'yarn install-ing packages',
@@ -135,10 +144,28 @@ const installPackages = () => {
 
     // https://github.com/sindresorhus/ora
     spinner.start();
-    exec(`yarn install --save`, () => {
+    exec(`yarn install`, () => {
       spinner.succeed();
       resolve()
     })
+  })
+}
+
+// restore a symlink from src/vf-components/vf-core-components to node_modules/@visual-framework/vf-core/components
+const restoreSymLink = () => {
+  return new Promise((resolve) => {
+    symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components')
+      .then(result => {
+        // console.log(result)
+
+        resolve()
+
+        return symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components')
+
+      })
+      .catch(err => console.error(err))
+    // console.log(`🗺  Switching to the ./${appName} directory`)
+    // process.chdir(`${appName}`);
   })
 }
 
