@@ -158,11 +158,12 @@ const restoreSymLink = () => {
   return new Promise((resolve) => {
     symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components')
       .then(result => {
-        console.log(result)
-        //> { reused: false }
-        return symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components')
+        // console.log(result)
 
         resolve()
+
+        return symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components')
+
       })
       .catch(err => console.error(err))
     // console.log(`🗺  Switching to the ./${appName} directory`)
