@@ -18,7 +18,8 @@ let appDirectory = `${process.cwd()}/${appName}`
 let kind = appKind ? "vf-eleventy" : "vf-eleventy";
 
 const run = async () => {
-  console.log(underline(`\nGetting started! 💎 ${kind}`))
+  console.log(` --------------\n`)
+  console.log(bold(`\n🚧  Getting started!`))
 
   let success = await createStencilApp()
   if (!success) {
@@ -28,10 +29,11 @@ const run = async () => {
   } else {
     await cdIntoNewApp()
     await installPackages()
-    console.log(bold("\n🎉  All done!\n"))
-    console.log(`\n⌨️  You're now ready to develop:`)
+    console.log(bold("\n🎉  All done!"))
+    console.log(`⌨️  You're now ready to develop:`)
     console.log(`    1. cd ${appName}`)
-    console.log(`    2. gulp dev`)
+    console.log(`    2. gulp dev\n`)
+    console.log(` --------------\n`)
   }
 }
 
@@ -44,7 +46,7 @@ const createStencilApp = () => {
             console.error(`\n⚠️  Couldn't check out ${kind} into "${appName}"`)
             resolve(false)
           } else {
-            console.log(`\nCloned Visual Frameork ${kind} into "${appName}"`)
+            console.log(`\n✨  Cloned ${kind} into "${appName}"`)
             resolve(true)
           }
         })
