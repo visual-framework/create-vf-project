@@ -15,7 +15,7 @@
     "url": "git+https://github.com/visual-framework/create-vf-eleventy.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ken Hawkins <ken.hawkins@embl.de> (https://www.embl.de/aboutus/communication_outreach/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/visual-framework/create-vf-eleventy/issues"
