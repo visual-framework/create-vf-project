@@ -19,6 +19,15 @@ const appName = process.argv.slice(2)[0];
 const appKind = process.argv.slice(2)[1];
 let appDirectory = `${process.cwd()}/${appName}`
 
+// Some reusable url, filenames
+let locations = {
+  zipName: 'source.zip',
+  tempLocation: 'temp',
+  zipFolderStem: 'notYetSet',
+  vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip',
+  vfDemoDesignSystem: 'tocome'
+}
+
 // default to vf-eleventy
 let kind = appKind ? "vf-eleventy" : "vf-eleventy";
 
@@ -51,16 +60,16 @@ const createApp = () => {
       try {
         const spinner = new ora({
           prefixText: '🌍 ',
-        	text: 'Fetching github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip',
+        	text: 'Fetching ' + locations.vfEleventy,
           // indent: 2,
         	// spinner: 'pong'
         });
 
 
-        download('https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip').then(data => {
-          fs.writeFileSync('source.zip', data);
+        download(locations.vfEleventy).then(data => {
+          fs.writeFileSync(locations.zipName, data);
           resolve(true)
-          spinner.text = 'Fetched github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip';
+          spinner.text = 'Fetched ' + locations.vfEleventy;
           spinner.succeed();
         });
 
@@ -79,23 +88,39 @@ const createApp = () => {
 
 const unzipArchive = () => {
   return new Promise((resolve) => {
-    fs.createReadStream('source.zip')
-      .pipe(unzipper.Extract({ path: 'temp' }))
-      .on('entry', entry => entry.autodrain())
+
+    // tap into the zip to see the parent folder name
+    fs.createReadStream(locations.zipName)
+      .pipe(unzipper.ParseOne('README.md'))
+      .on('entry', function (entry) {
+        locations.zipFolderStem = entry.path.split('/')[0];
+        entry.autodrain();
+      });
+
+    // extract contents to temp location
+    fs.createReadStream(locations.zipName)
+      .pipe(unzipper.Extract({ path: locations.tempLocation }))
+      // .pipe(unzipper.Parse())
+      // .on('entry', entry => entry.autodrain())
+      .on('entry', function (entry) {
+        const fileName = entry.path;
+        const type = entry.type; // 'Directory' or 'File'
+        const size = entry.vars.uncompressedSize; // There is also compressedSize;
+        entry.autodrain();
+      })
       .promise()
       .then( () => resolve(), e => console.log('⚠️  Error unzipping',e));
-  })
+  });
 }
 
 
 const moveFiles = () => {
   return new Promise((resolve) => {
-    del(['source.zip'], function(err, deleted) {
+    del([locations.zipName], function(err, deleted) {
       if (err) throw err;
-      // deleted files
-      // console.log(deleted);
     });
-    mv('temp/vf-eleventy-2.0.0-alpha.6', appName, {mkdirp: true}, function(err) {
+    console.log('te', locations.zipFolderStem);
+    mv(locations.tempLocation+'/'+locations.zipFolderStem, appName, {mkdirp: true}, function(err) {
       console.log(`🚚  Files unpacked and moved into ./${appName}`)
       resolve()
     });
