@@ -196,4 +196,22 @@ const restoreSymLink = () => {
   });
 };
 
+// restore a symlink from src/vf-components/vf-core-components to node_modules/@visual-framework/vf-core/components
+const restoreSymLink = () => {
+  return new Promise((resolve) => {
+    symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components')
+      .then(result => {
+        // console.log(result)
+
+        resolve()
+
+        return symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components')
+
+      })
+      .catch(err => console.error(err))
+    // console.log(`🗺  Switching to the ./${appName} directory`)
+    // process.chdir(`${appName}`);
+  })
+}
+
 run();
