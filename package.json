@@ -1,7 +1,7 @@
 {
   "name": "@visual-framework/create-vf-eleventy",
   "version": "0.0.13",
-  "description": "Helps to create a new Visual Framework 2.0 Eleventy-based project.",
+  "description": "Helps to create a new Visual Framework 2.0-based project.",
   "main": "createVfEleventy.js",
   "bin": {
     "create-vf-eleventy": "createVfEleventy.js"
