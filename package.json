@@ -1,7 +1,7 @@
 {
   "name": "@visual-framework/create-vf-eleventy",
-  "version": "0.0.12",
-  "description": "Helps to create a new Visual Framework 2.0 Eleventy-based project.",
+  "version": "0.0.14",
+  "description": "Helps to create a new Visual Framework 2.0-based project.",
   "main": "createVfEleventy.js",
   "bin": {
     "create-vf-eleventy": "createVfEleventy.js"
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/visual-framework/create-vf-eleventy.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ken Hawkins <ken.hawkins@embl.de> (https://www.embl.de/aboutus/communication_outreach/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/visual-framework/create-vf-eleventy/issues"
