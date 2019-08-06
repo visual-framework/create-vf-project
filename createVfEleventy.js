@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 const mv = require('mv');
 const del = require('delete');
-const symlinkDir = require('symlink-dir')
 const symlinkDir = require('symlink-dir');
 const exec = require('child_process').exec;
 const download = require('download');
@@ -26,11 +25,27 @@ let locations = {
   tempLocation: 'temp',
   zipFolderStem: 'notYetSet',
   vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip',
-  vfDemoDesignSystem: 'tocome'
+  vfDemoDesignSystem: 'https://github.com/visual-framework/vf-demo-design-system/archive/develop.zip'
 };
 
 // default to vf-eleventy
-let kind = appKind ? "vf-eleventy" : "vf-eleventy";
+let kind = appKind || "vf-eleventy";
+
+// track where we the user wants to get the package from
+let activeProjectUrl = 'notYetSet';
+switch (kind) {
+  case 'vf-eleventy':
+    activeProjectUrl = locations.vfEleventy;
+    break;
+  case 'vf-demo-design-system':
+    activeProjectUrl = locations.vfDemoDesignSystem;
+    break;
+  default:
+    // default to vf-eleventy
+    console.log(`\n⚠️  We didn\'t see or understand the project template request, we'll proceed with using the vf-eleventy boilerplate.\n`);
+    activeProjectUrl = locations.vfEleventy;
+    break;
+}
 
 const run = async () => {
   console.log(` --------------\n`);
@@ -61,15 +76,15 @@ const createApp = () => {
       try {
         const spinner = new ora({
           prefixText: '🌍 ',
-        	text: 'Fetching ' + locations.vfEleventy,
+        	text: 'Fetching ' + activeProjectUrl,
           // indent: 2,
         	// spinner: 'pong'
         });
 
-        download(locations.vfEleventy).then(data => {
+        download(activeProjectUrl).then(data => {
           fs.writeFileSync(locations.zipName, data);
           resolve(true);
-          spinner.text = 'Fetched ' + locations.vfEleventy;
+          spinner.text = 'Fetched ' + activeProjectUrl;
           spinner.succeed();
         });
 
@@ -118,7 +133,6 @@ const moveFiles = () => {
     del([locations.zipName], function(err, deleted) {
       if (err) throw err;
     });
-    console.log('te', locations.zipFolderStem);
     mv(locations.tempLocation+'/'+locations.zipFolderStem, appName, {mkdirp: true}, function(err) {
       console.log(`🚚  Files unpacked and moved into ./${appName}`);
       resolve();
