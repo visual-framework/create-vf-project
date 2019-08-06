@@ -16,10 +16,10 @@ const cliSpinners = require('cli-spinners');
 const { red, blue, bold, underline } = require("colorette")
 
 const appName = process.argv.slice(2)[0];
-const appKind = process.argv.slice(2)[1] !== "--app";
+const appKind = process.argv.slice(2)[1];
 let appDirectory = `${process.cwd()}/${appName}`
 
-// for now we only support vf-eleventy
+// default to vf-eleventy
 let kind = appKind ? "vf-eleventy" : "vf-eleventy";
 
 const run = async () => {
@@ -58,21 +58,12 @@ const createApp = () => {
 
 
         download('https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip').then(data => {
-          fs.writeFileSync('vf-eleventy.zip', data);
+          fs.writeFileSync('source.zip', data);
           resolve(true)
           spinner.text = 'Fetched github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip';
           spinner.succeed();
         });
 
-        //
-        // exec(`git clone --depth 1 -b master https://github.com/visual-framework/${kind} "${appName}"`, (error, stdout, stderr) => {
-        //   if (error) {
-        //     resolve(false)
-        //   } else {
-        //     console.log(`\n✨  Cloned ${kind} into "${appName}"`)
-        //     resolve(true)
-        //   }
-        // })
       } catch(e) {
         console.error(`\n⚠️  Couldn't get archive of ${kind}"`)
         resolve(false)
@@ -88,7 +79,7 @@ const createApp = () => {
 
 const unzipArchive = () => {
   return new Promise((resolve) => {
-    fs.createReadStream('vf-eleventy.zip')
+    fs.createReadStream('source.zip')
       .pipe(unzipper.Extract({ path: 'temp' }))
       .on('entry', entry => entry.autodrain())
       .promise()
@@ -99,7 +90,7 @@ const unzipArchive = () => {
 
 const moveFiles = () => {
   return new Promise((resolve) => {
-    del(['vf-eleventy.zip'], function(err, deleted) {
+    del(['source.zip'], function(err, deleted) {
       if (err) throw err;
       // deleted files
       // console.log(deleted);
