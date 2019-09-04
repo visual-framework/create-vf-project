@@ -24,7 +24,7 @@ let locations = {
   zipName: 'source.zip',
   tempLocation: 'temp',
   zipFolderStem: 'notYetSet',
-  vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.6.zip',
+  vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.8.zip',
   vfDemoDesignSystem: 'https://github.com/visual-framework/vf-demo-design-system/archive/master.zip'
 };
 
