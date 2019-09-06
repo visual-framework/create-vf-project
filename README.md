@@ -5,13 +5,13 @@ Helps to create a new [Visual Framework 2.0](https://visual-framework.github.io/
 To make a [`vf-eleventy`](https://github.com/visual-framework/vf-eleventy) based project:
 
 ```
-npm init @visual-framework/vf-eleventy your-new-site-name vf-eleventy
+yarn create @visual-framework/vf-eleventy your-new-site-name vf-eleventy
 ```
 
 To make a [`vf-demo-design-system`](https://github.com/visual-framework/vf-demo-design-system) based project:
 
 ```
-npm init @visual-framework/vf-eleventy your-new-site-name vf-demo-design-system
+yarn create @visual-framework/vf-eleventy your-new-site-name vf-demo-design-system
 ```
 
 
