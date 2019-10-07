@@ -1,14 +1,14 @@
 {
-  "name": "@visual-framework/create-vf-eleventy",
-  "version": "0.0.17",
+  "name": "@visual-framework/create-vf-project",
+  "version": "0.1.0",
   "description": "Helps to create a new Visual Framework 2.0-based project.",
-  "main": "createVfEleventy.js",
+  "main": "createVfProject.js",
   "bin": {
-    "create-vf-eleventy": "createVfEleventy.js"
+    "create-vf-eleventy": "createVfProject.js"
   },
   "scripts": {
-    "start": "node createVfEleventy.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node createVfProject.js",
+    "test": "yarn start test-site-name vf-eleventy"
   },
   "repository": {
     "type": "git",
