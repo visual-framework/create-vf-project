@@ -1,6 +1,6 @@
 {
   "name": "@visual-framework/create-vf-project",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Helps to create a new Visual Framework 2.0-based project.",
   "main": "createVfProject.js",
   "bin": {
@@ -22,12 +22,12 @@
   },
   "homepage": "https://github.com/visual-framework/create-vf-eleventy#readme",
   "dependencies": {
-    "colorette": "^1.0.8",
+    "colorette": "^1.1.0",
     "delete": "^1.1.0",
     "download": "^7.1.0",
     "mv": "^2.1.1",
-    "ora": "^3.4.0",
-    "symlink-dir": "^3.1.0",
-    "unzipper": "^0.10.1"
+    "ora": "^4.0.2",
+    "symlink-dir": "^3.1.1",
+    "unzipper": "^0.10.5"
   }
 }
