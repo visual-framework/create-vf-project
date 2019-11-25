@@ -24,7 +24,10 @@ let locations = {
   zipName: 'source.zip',
   tempLocation: 'temp',
   zipFolderStem: 'notYetSet',
-  vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.12.zip',
+  vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.13.zip',
+  ebiEleventy: 'https://github.com/ebiwd/ebi-eleventy-boilerplate/archive/master.zip',
+  emblEleventy: 'https://github.com/visual-framework/embl-communications/embl-eleventy/master.13.zip',
+  vfBuildBoilerplate: 'https://github.com/visual-framework/vf-build-boilerplate/archive/master.zip',
   vfDemoDesignSystem: 'https://github.com/visual-framework/vf-demo-design-system/archive/master.zip'
 };
 
@@ -37,8 +40,17 @@ switch (kind) {
   case 'vf-eleventy':
     activeProjectUrl = locations.vfEleventy;
     break;
+  case 'ebi-eleventy':
+    activeProjectUrl = locations.ebiEleventy;
+    break;
+  case 'embl-eleventy':
+    activeProjectUrl = locations.emblEleventy;
+    break;
   case 'vf-demo-design-system':
     activeProjectUrl = locations.vfDemoDesignSystem;
+    break;
+  case 'vf-build-boilerplate':
+    activeProjectUrl = locations.vfBuildBoilerplate;
     break;
   default:
     // default to vf-eleventy

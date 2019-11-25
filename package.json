@@ -1,6 +1,6 @@
 {
   "name": "@visual-framework/create-vf-project",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Helps to create a new Visual Framework 2.0-based project.",
   "main": "createVfProject.js",
   "bin": {
