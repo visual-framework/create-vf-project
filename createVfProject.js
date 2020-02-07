@@ -107,7 +107,7 @@ const createApp = () => {
     } else {
       console.log("\nNo app name was provided.");
       console.log("\nProvide an app name in the following format: ");
-      console.log("\nyarn create @visual-framework/vf-eleventy", `"app-name"\n`);
+      console.log("\nyarn create @visual-framework/vf-project", `"app-name"\n`);
       resolve(false);
     }
   });
