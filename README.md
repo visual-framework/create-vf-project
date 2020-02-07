@@ -28,6 +28,13 @@ To make a [`vf-eleventy`](https://github.com/visual-framework/vf-eleventy) based
 yarn create @visual-framework/vf-project your-new-site-name vf-eleventy
 ```
 
+## Troubleshooting
+
+If you're having trouble with `yarn create` you can also try:
+
+- `npx @visual-framework/create-vf-project  {your-new-site-name} {site-type}`
+- `npx @visual-framework/create-vf-project testproject vf-eleventy`
+
 ## Developing the template
 
 1. Make any needed edits
