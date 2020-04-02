@@ -25,7 +25,7 @@
   "dependencies": {
     "colorette": "^1.1.0",
     "delete": "^1.1.0",
-    "download": "^7.1.0",
+    "download": "^8.0.0",
     "mv": "^2.1.1",
     "ora": "^4.0.3",
     "symlink-dir": "^3.1.1",
