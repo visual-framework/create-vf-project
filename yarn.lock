@@ -789,13 +789,6 @@ make-dir@^1.0.0, make-dir@^1.2.0:
   dependencies:
     pify "^3.0.0"
 
-make-dir@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.0.0.tgz#1b5f39f6b9270ed33f9f054c5c0f84304989f801"
-  integrity sha512-grNJDhb8b1Jm1qeqW5R/O63wUo4UXo2v2HMic6YT9i/HBlF93S8jkMgH7yugvY9ABDShH4VZMn8I+U8+fCNegw==
-  dependencies:
-    semver "^6.0.0"
-
 matched@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/matched/-/matched-1.0.2.tgz#1d95d77dd5f1b5075a9e94acde5462ffd85f317a"
@@ -1014,7 +1007,7 @@ readable-stream@^2.0.0, readable-stream@^2.0.2, readable-stream@^2.3.0, readable
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-rename-overwrite@^2.0.1:
+rename-overwrite@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/rename-overwrite/-/rename-overwrite-2.0.2.tgz#7741f4b15af3eb67c377a5b0509742f761bced81"
   integrity sha512-XodkUmbg11ZzZoAkYfJYEmj8FscfeRL2KHGALeDSB76ia8A1zqQq0+WkcepXm7QkuzmW0CE3uiFUBr/UJfin+w==
@@ -1082,11 +1075,6 @@ seek-bzip@^1.0.5:
   integrity sha1-z+kXyz0nS8/6x5J1ivUxc+sfq9w=
   dependencies:
     commander "~2.8.1"
-
-semver@^6.0.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
-  integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
 setimmediate@~1.0.4:
   version "1.0.5"
@@ -1166,15 +1154,14 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-symlink-dir@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/symlink-dir/-/symlink-dir-3.1.1.tgz#cb1c8a34605e77618a863363be260e7c6f989ddc"
-  integrity sha512-i8+cBpaAFDWIlNT8qkpH1QPBCTEFhIPnA2w/pfndTebe4E2YysMg4XNfdaVM+qf5iyYfyHk/JY4PHmxZ00OmRA==
+symlink-dir@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/symlink-dir/-/symlink-dir-4.0.1.tgz#27cd671825fd6c473109678e08d96cfbe85d52ea"
+  integrity sha512-eQg3i9IDWlDMeSrfWer2cCIMW8KseWkwN1ar6cQfpm0+JGxb/LBGoRteFU1SUp6V1tGdHTWI3Hj06OXOK7YZcQ==
   dependencies:
     better-path-resolve "^1.0.0"
     graceful-fs "^4.1.11"
-    make-dir "^3.0.0"
-    rename-overwrite "^2.0.1"
+    rename-overwrite "^2.0.2"
 
 tar-stream@^1.5.2:
   version "1.6.2"
