@@ -24,7 +24,7 @@ let locations = {
   zipName: 'source.zip',
   tempLocation: 'temp',
   zipFolderStem: 'notYetSet',
-  vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.15.zip',
+  vfEleventy: 'https://github.com/visual-framework/vf-eleventy/archive/v2.0.0-alpha.17.zip',
   ebiEleventy: 'https://github.com/ebiwd/ebi-eleventy-boilerplate/archive/master.zip',
   emblEleventy: 'https://github.com/visual-framework/embl-communications/embl-eleventy/master.zip',
   vfBuildBoilerplate: 'https://github.com/visual-framework/vf-build-boilerplate/archive/master.zip',
@@ -180,7 +180,6 @@ const installPackages = () => {
     	// spinner.color = 'yellow';
     }, 5000);
 
-
     // https://github.com/sindresorhus/ora
     spinner.start();
     exec(`yarn install`, () => {
@@ -200,7 +199,6 @@ const restoreSymLink = () => {
         resolve();
 
         return symlinkDir('node_modules/\@visual-framework', 'src/components/vf-core-components');
-
       })
       .catch(err => console.error(err));
     // console.log(`🗺  Switching to the ./${appName} directory`)
