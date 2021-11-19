@@ -1,6 +1,6 @@
 # create-vf-project
 
-Helps to create a new [Visual Framework 2.0](https://visual-framework.github.io/vf-welcome/)-based project.
+Helps to create a new [Visual Framework](https://visual-framework.github.io/vf-welcome/)-based project.
 
 ## Usage
 
