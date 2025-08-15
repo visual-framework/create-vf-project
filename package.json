@@ -28,7 +28,7 @@
     "download": "^8.0.0",
     "mv": "^2.1.1",
     "ora": "^4.0.4",
-    "symlink-dir": "^4.1.0",
+    "symlink-dir": "^6.0.0",
     "unzipper": "^0.10.11"
   }
 }
