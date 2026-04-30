@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
+"@zkochan/rimraf@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@zkochan/rimraf/-/rimraf-4.0.0.tgz#41b8522f5f624ce3d72074f5cf0ff00829c70d35"
+  integrity sha512-0EdBn93hMsbx4svJsKQCch+sNMuXvzWbVYqTCGdctQmxtuYK57uCURZPNiNdwS2Y31d96DMWI3BpJ9DLN2Jxfw==
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
@@ -58,12 +63,12 @@ base64-js@^1.3.1:
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
-better-path-resolve@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/better-path-resolve/-/better-path-resolve-1.0.0.tgz#13a35a1104cdd48a7b74bf8758f96a1ee613f99d"
-  integrity sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==
+better-path-resolve@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/better-path-resolve/-/better-path-resolve-2.0.0.tgz#440e91369696d7298e8938d86d69848a91e71d0d"
+  integrity sha512-VvvsZgI0upmMbG1iEFiQ7hRG+fDJwmw7iFfKLzBVNhRd2ycauJ3+3w50ESX+pS2tvS9R2hMzijwE+vinDyqQzQ==
   dependencies:
-    is-windows "^1.0.0"
+    is-windows "^1.0.2"
 
 big-integer@^1.6.17:
   version "1.6.52"
@@ -463,6 +468,15 @@ fs-constants@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs-constants/-/fs-constants-1.0.0.tgz#6be0de9be998ce16af8afc24497b9ee9b7ccd9ad"
   integrity sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==
 
+fs-extra@11.3.4:
+  version "11.3.4"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.3.4.tgz#ab6934eca8bcf6f7f6b82742e33591f86301d6fc"
+  integrity sha512-CTXd6rk/M3/ULNQj8FBqBWHYBVYybQ3VPBw0xGKFe3tuH7ytT6ACnvzpIQ3UZtB8yvUKC2cXn1a+x+5EVQLovA==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -564,7 +578,7 @@ got@^8.3.1:
     url-parse-lax "^3.0.0"
     url-to-options "^1.0.1"
 
-graceful-fs@^4.1.10, graceful-fs@^4.1.2, graceful-fs@^4.2.2:
+graceful-fs@^4.1.10, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
   version "4.2.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
@@ -693,7 +707,7 @@ is-valid-glob@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-valid-glob/-/is-valid-glob-1.0.0.tgz#29bf3eff701be2d4d315dbacc39bc39fe8f601aa"
   integrity sha512-AhiROmoEFDSsjx8hW+5sGwgKVIORcXnrlAx/R0ZSeaPw70Vw0CqkGBBhHGL58Uox2eXnU1AnvXJl1XlyedO5bA==
 
-is-windows@^1.0.0, is-windows@^1.0.1:
+is-windows@^1.0.1, is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
   integrity sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==
@@ -720,6 +734,15 @@ json-buffer@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.0.tgz#5b1f397afc75d677bde8bcfc0e47e1f9a3d9a898"
   integrity sha512-CuUqjv0FUZIdXkHPI8MezCnFCdaTAacej1TZYulLoAg1h/PhwkdXFN4V/gzY4g+fMBCOV2xF+rp7t2XD2ns/NQ==
+
+jsonfile@^6.0.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-6.2.1.tgz#b6e31717f22cc37330b081ce0051ed5de53af2f6"
+  integrity sha512-zwOTdL3rFQ/lRdBnntKVOX6k5cKJwEc1HdilT71BWEu7J41gXIB2MRp+vxduPSwZJPWBxEzv4yH1wYLJGUHX4Q==
+  dependencies:
+    universalify "^2.0.0"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
 
 keyv@3.0.0:
   version "3.0.0"
@@ -983,12 +1006,13 @@ readable-stream@^2.0.0, readable-stream@^2.0.2, readable-stream@^2.3.0, readable
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-rename-overwrite@^3.1.0:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/rename-overwrite/-/rename-overwrite-3.1.2.tgz#a176b9b64081aca8a7396d9f442e69eaa0caa30a"
-  integrity sha512-hRjXzyL+g9uBmRDpX8m/00zwtso+e3XQsOgsCJGGJOQm+paoNZCKBS8Hm9x4WFfPCv2W0Ql5HOFqHlPiAO/UDw==
+rename-overwrite@^7.0.0:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/rename-overwrite/-/rename-overwrite-7.0.1.tgz#2684f32ec3ee0a755723061aba221072832ff9c7"
+  integrity sha512-tYzdjRCtRMiBg0xLqFEZH11T8HvpvhtiWE2Q8TWOpq0HAL07YBJEzC4pgfSWqLYziHCtlS16yB8tV4hFJrXvtA==
   dependencies:
-    rimraf "^3.0.2"
+    "@zkochan/rimraf" "^4.0.0"
+    fs-extra "11.3.4"
 
 resolve-dir@^1.0.0:
   version "1.0.1"
@@ -1017,13 +1041,6 @@ rimraf@2, rimraf@^2.6.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
   integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
-  dependencies:
-    glob "^7.1.3"
-
-rimraf@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
-  integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
   dependencies:
     glob "^7.1.3"
 
@@ -1134,13 +1151,13 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-symlink-dir@^4.1.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/symlink-dir/-/symlink-dir-4.2.0.tgz#9c76888d2ce1408aa3ebf68db387b3633ac94b48"
-  integrity sha512-I0Sq5blTJxAe/bd/G5rnEqPEZuO84L7LxX8A937PYOyhqV7FLIJhMM6EXtXG5an1937PjsTcY/8UAwBjoliMOA==
+symlink-dir@^10.0.0:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/symlink-dir/-/symlink-dir-10.0.1.tgz#e9c77178d6baa2ec361f50b71d7f3da4eac2445f"
+  integrity sha512-34rLIwj9YzKr+2BTIpvp1/sYO8i3nmzTyrtx/iOKX2qWVEbqgWMfmkG41TDXiCaRi4I7dsHfTTnxUVi9p6RnIQ==
   dependencies:
-    better-path-resolve "^1.0.0"
-    rename-overwrite "^3.1.0"
+    better-path-resolve "^2.0.0"
+    rename-overwrite "^7.0.0"
 
 tar-stream@^1.5.2:
   version "1.6.2"
@@ -1189,6 +1206,11 @@ unbzip2-stream@^1.0.9:
   dependencies:
     buffer "^5.2.1"
     through "^2.3.8"
+
+universalify@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.1.tgz#168efc2180964e6386d061e094df61afe239b18d"
+  integrity sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==
 
 unzipper@^0.10.11:
   version "0.10.14"
